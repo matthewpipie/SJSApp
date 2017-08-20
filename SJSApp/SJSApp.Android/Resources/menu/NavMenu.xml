@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group android:checkableBehavior="single">
+    <item
+      android:id="@+id/schedule"
+      android:title="Schedule" />
+    <item
+      android:id="@+id/assignmentCenter"
+      android:title="Assignment Center" />
+  </group>
+
+  <item android:title="Resources">
+    <menu>
+      <item
+        android:id="@+id/usAnnouncements"
+        android:title="US Announcements" />
+      <item
+        android:id="@+id/sacSuggestions"
+        android:title="SAC Suggestions" />
+      <item
+        android:id="@+id/naviance"
+        android:title="Naviance" />
+    </menu>
+  </item>
+</menu>
