@@ -10,6 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)DayAndAnnouncement.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SchoolAssignment.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SchoolClass.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SJSLoginManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SJSManager.cs" />

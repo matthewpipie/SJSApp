@@ -59,7 +59,7 @@
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchProfiling>true</MtouchProfiling>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Developer: Matthew Giordano (W67GP27S7K)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
   </PropertyGroup>
   <ItemGroup>
@@ -145,6 +145,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssignmentsTableView.cs" />
+    <Compile Include="AssignmentsTableView.designer.cs">
+      <DependentUpon>AssignmentsTableView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssignmentsViewController.cs" />
+    <Compile Include="AssignmentsViewController.designer.cs">
+      <DependentUpon>AssignmentsViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginViewController.cs" />
     <Compile Include="LoginViewController.designer.cs">
       <DependentUpon>LoginViewController.cs</DependentUpon>

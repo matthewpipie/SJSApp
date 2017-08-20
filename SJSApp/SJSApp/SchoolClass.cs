@@ -9,12 +9,14 @@ namespace SJSApp
         public string StartTime {get; set;}
         public string EndTime {get; set;}
         public string Room {get; set;}
-        public SchoolClass(string name, string startTime, string endTime, string room)
+        public string Block {get; set;}
+        public SchoolClass(string name, string startTime, string endTime, string room, string block)
         {
             Name = name;
             StartTime = startTime;
             EndTime = endTime;
             Room = room;
+            Block = block;
         }
         public string TimeDisplay()
         {
@@ -22,7 +24,7 @@ namespace SJSApp
         }
         public string NameDisplay()
         {
-            return Name + (String.IsNullOrEmpty(Room) ? "" : " (" + Room + ")");
+            return (Block.Equals(Name) ? "" : Block + " - ") + Name + (String.IsNullOrEmpty(Room) ? "" : " (" + Room + ")");
         }
         public static string FixName(string name)
         {

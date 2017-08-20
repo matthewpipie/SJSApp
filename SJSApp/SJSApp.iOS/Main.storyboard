@@ -7,7 +7,7 @@
         <!--View Controller-->
         <scene sceneID="7">
             <objects>
-                <viewController id="8" sceneMemberID="viewController">
+                <viewController id="8" sceneMemberID="viewController" customClass="AssignmentsViewController" storyboardIdentifier="AssignmentsViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3"/>
                         <viewControllerLayoutGuide type="bottom" id="4"/>
@@ -16,8 +16,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="58" translatesAutoresizingMaskIntoConstraints="NO" customClass="AssignmentsTableView">
+                                <rect key="frame" x="16" y="16" width="288" height="415"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="59">
+                                        <rect key="frame" x="0.0" y="28" width="288" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59" id="60">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <constraints>
+                            <constraint id="61" firstItem="58" firstAttribute="trailing" secondItem="9" secondAttribute="trailingMargin"/>
+                            <constraint id="62" firstItem="58" firstAttribute="leading" secondItem="9" secondAttribute="leadingMargin"/>
+                            <constraint id="63" firstItem="3" firstAttribute="bottom" secondItem="58" secondAttribute="top" constant="4"/>
+                            <constraint id="64" firstItem="58" firstAttribute="bottom" secondItem="4" secondAttribute="top"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 2" id="10"/>
+                    <connections>
+                        <outlet property="assignmentsTableView" destination="58" id="name-outlet-58"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="11" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +79,6 @@
                             <constraint id="47" firstItem="26" firstAttribute="trailing" secondItem="14" secondAttribute="trailingMargin"/>
                             <constraint id="48" firstItem="5" firstAttribute="bottom" secondItem="26" secondAttribute="top" constant="4"/>
                             <constraint id="49" firstItem="26" firstAttribute="leading" secondItem="14" secondAttribute="leadingMargin"/>
-                            <constraint id="50" firstItem="26" firstAttribute="leading" secondItem="14" secondAttribute="leadingMargin"/>
                             <constraint id="51" firstItem="26" firstAttribute="bottom" secondItem="6" secondAttribute="top"/>
                         </constraints>
                     </view>

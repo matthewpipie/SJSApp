@@ -16,7 +16,7 @@ namespace SJSApp
         // Private vars
         private SJSLoginManager LoginManager;
 
-        private Newtonsoft.Json.Linq.JArray AssignmentCache { get; set; }
+        private List<SchoolAssignment> AssignmentCache { get; set; }
 
         private List<SchoolClass> ScheduleCache { get; set; }
         private DateTime ScheduleCacheDate { get; set; }
@@ -61,7 +61,7 @@ namespace SJSApp
                         List<SchoolClass> classes = new List<SchoolClass>();
                         foreach (var schoolClass in o.Children())
                         {
-                            classes.Add(new SchoolClass(SchoolClass.FixName(schoolClass["CourseTitle"].ToString()), schoolClass["MyDayStartTime"].ToString(), schoolClass["MyDayEndTime"].ToString(), schoolClass["RoomNumber"].ToString()));
+                            classes.Add(new SchoolClass(SchoolClass.FixName(schoolClass["CourseTitle"].ToString()), schoolClass["MyDayStartTime"].ToString(), schoolClass["MyDayEndTime"].ToString(), schoolClass["RoomNumber"].ToString(), schoolClass["Block"].ToString()));
                         }
                         ScheduleCache = classes;
                         ScheduleCacheDate = day;
@@ -79,19 +79,41 @@ namespace SJSApp
             });
             return (ScheduleCacheDate == day) ? ScheduleCache : null;
         }
-        public Newtonsoft.Json.Linq.JArray GetAssignments(DateTime start, DateTime end, Action<Newtonsoft.Json.Linq.JArray> callback)
+        public List<SchoolAssignment> GetAssignments(DateTime start, DateTime end, Action<List<SchoolAssignment>> callback)
         {
             // %2F is the HTML encoding for a slash (/) which for some really weird reason myschoolapp uses
-            // They also use M-D-YYYY which is just really strange and not standard at all
+            // They also use M/D/YYYY which is just really strange and not standard at all
             string startDate = start.Month.ToString() + "%2F" + start.Day.ToString() + "%2F" + start.Year.ToString();
             string endDate = end.Month.ToString() + "%2F" + end.Day.ToString() + "%2F" + end.Year.ToString();
-            LoginManager.MakeAPICall("DataDirect/AssignmentCenterAssignments/?format=json&filter=2&dateStart=" + startDate + "&dateEnd=" + endDate + "&persona=2&statusList=&sectionList=", (Newtonsoft.Json.Linq.JArray o) =>
+            LoginManager.MakeAPICall("DataDirect/AssignmentCenterAssignments/?format=json&filter=1&dateStart=" + startDate + "&dateEnd=" + endDate + "&persona=2&statusList=&sectionList=", (Newtonsoft.Json.Linq.JArray o) =>
             {
                 if (o != null)
                 {
-                    AssignmentCache = o;
+                    try
+                    {
+                        List<SchoolAssignment> assignments = new List<SchoolAssignment>();
+                        foreach (var schoolAssignment in o.Children())
+                        {
+                            //string a = SchoolClass.FixName(schoolAssignment["groupname"].ToString());
+                            //string b = schoolAssignment["assignment_type"].ToString();
+                            //string c = schoolAssignment["date_dueTicks"].ToString();
+                            //string d = SchoolAssignment.GetFormattedDate(schoolAssignment["date_due"].ToString());
+                            //string e = schoolAssignment["short_description"].ToString();
+                            //int f = (int)schoolAssignment["date_dueTicks"];
+                            assignments.Add(new SchoolAssignment(SchoolClass.FixName(schoolAssignment["groupname"].ToString()), schoolAssignment["assignment_type"].ToString(), Int64.Parse(schoolAssignment["date_dueTicks"].ToString()), SchoolAssignment.GetFormattedDate(schoolAssignment["date_due"].ToString()), schoolAssignment["short_description"].ToString()));
+                        }
+                        AssignmentCache = assignments;
+                        callback(assignments);
+                    }
+                    catch
+                    {
+                        callback(null);
+                    }
                 }
-                callback(o);
+                else
+                {
+                    callback(null);
+                }
             });
             return AssignmentCache;
         }

@@ -1,4 +1,5 @@
 ﻿using Foundation;
+using CoreGraphics;
 using System;
 using UIKit;
 using System.Collections.Generic;
@@ -60,11 +61,17 @@ namespace SJSApp.iOS
 
             public ScheduleTableCell()
             {
-                int len = 170;
-                LeftValue = new UILabel(new RectangleF(0, 0, len, 50));
-                RightValue = new UILabel(new RectangleF(len, 0, 999, 50));
-                LeftValue.BackgroundColor = UIColor.Red;
-                RightValue.BackgroundColor = UIColor.Green;
+                int len = 100;
+                LeftValue = new UILabel(new CGRect(0, 0, len, 50));
+                RightValue = new UILabel(new CGRect(len, 0, 999, 50));
+                LeftValue.AdjustsFontSizeToFitWidth = true;
+                LeftValue.Lines = 2;
+                LeftValue.LineBreakMode = UILineBreakMode.WordWrap;
+
+                LeftValue.Layer.BorderColor = UIColor.LightGray.CGColor;
+                LeftValue.Layer.BorderWidth = 1;
+                RightValue.Layer.BorderColor = UIColor.LightGray.CGColor;
+                RightValue.Layer.BorderWidth = 1;
 
                 AddSubview(LeftValue);
                 AddSubview(RightValue);
