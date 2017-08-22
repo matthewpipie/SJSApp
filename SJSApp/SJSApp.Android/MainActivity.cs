@@ -30,20 +30,20 @@ namespace SJSApp.Droid
 
             // Set up slide menu
 
-            drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
+            //drawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 
             // Init toolbar
-            var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
-            SetSupportActionBar(toolbar);
+            //var toolbar = FindViewById<Android.Support.V7.Widget.Toolbar>(Resource.Id.toolbar);
+            //SetSupportActionBar(toolbar);
 
             // Attach item selected handler to navigation view
-            var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
-            navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
+            //var navigationView = FindViewById<NavigationView>(Resource.Id.nav_view);
+            //navigationView.NavigationItemSelected += NavigationView_NavigationItemSelected;
 
             // Create ActionBarDrawerToggle button and add it to the toolbar
-            var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
-            drawerLayout.SetDrawerListener(drawerToggle);
-            drawerToggle.SyncState();
+            //var drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, Resource.String.open_drawer, Resource.String.close_drawer);
+            //drawerLayout.SetDrawerListener(drawerToggle);
+            //drawerToggle.SyncState();
 
 
             SJSManager.Instance.InvalidateToken();
@@ -51,7 +51,7 @@ namespace SJSApp.Droid
 
             MainFragment frag = new MainFragment();
             FragmentTransaction ft = FragmentManager.BeginTransaction();
-            ft.Replace(Resource.Id.fragment_container, frag);
+            //ft.Replace(Resource.Id.fragment_container, frag);
             ft.AddToBackStack(null);
             ft.Commit();
         }
@@ -59,7 +59,7 @@ namespace SJSApp.Droid
 
         void NavigationView_NavigationItemSelected(object sender, NavigationView.NavigationItemSelectedEventArgs e)
         {
-            switch (e.MenuItem.ItemId)
+            /*switch (e.MenuItem.ItemId)
             {
                 case (Resource.Id.schedule):
                     // React on 'Schedule' selection
@@ -82,7 +82,7 @@ namespace SJSApp.Droid
 
             // Close drawer
 
-            drawerLayout.CloseDrawers();
+            drawerLayout.CloseDrawers();*/
         }
     }
 }

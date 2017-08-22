@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -11,7 +10,7 @@ using Android.Util;
 using Android.Views;
 using Android.Widget;
 
-namespace SJSApp10.Droid
+namespace SJSApp.Droid
 {
     public class LoginFragment : DialogFragment
     {
@@ -23,7 +22,7 @@ namespace SJSApp10.Droid
                 .SetPositiveButton("Sign In", (senderAlert, args) =>
                 {
                     //Toast.MakeText(this.Activity, this.Dialog.FindViewById<EditText>(Resource.Id.username).Text, ToastLength.Short).Show();
-                    string username = this.Dialog.FindViewById<EditText>(Resource.Id.username).Text;
+                    /*string username = this.Dialog.FindViewById<EditText>(Resource.Id.username).Text;
                     string password = this.Dialog.FindViewById<EditText>(Resource.Id.password).Text;
                     SJSManager.Instance.SetCredentials(username, password, true, () =>
                     {
@@ -31,7 +30,7 @@ namespace SJSApp10.Droid
                         //resultIntent.PutExtra("username", username);
                         //resultIntent.PutExtra("password", password);
                         this.Activity.SetResult(Result.Ok, resultIntent);
-                    });
+                    });*/
 
                 //})
                 //.SetNegativeButton("Cancel", (senderAlert, args) =>

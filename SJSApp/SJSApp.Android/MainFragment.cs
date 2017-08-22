@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using Android.App;
 using Android.Content;
 using Android.OS;
@@ -13,7 +12,7 @@ using Android.Widget;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace SJSApp10.Droid
+namespace SJSApp.Droid
 {
     public class MainFragment : Fragment
     {
@@ -30,11 +29,11 @@ namespace SJSApp10.Droid
             // Use this to return your custom view for this Fragment
             // return inflater.Inflate(Resource.Layout.YourFragment, container, false);
 
-            view = inflater.Inflate(Resource.Layout.ScheduleFragment, container, false);
+            //view = inflater.Inflate(Resource.Layout.ScheduleFragment, container, false);
 
-            Button getAssignments = view.FindViewById<Button>(Resource.Id.assign);
+            //Button getAssignments = view.FindViewById<Button>(Resource.Id.assign);
 
-            getAssignments.Click += delegate {
+            //getAssignments.Click += delegate {
                 //button.Text = string.Format ("{0} clicks!", count++);
                 //string username = FindViewById<EditText>(Resource.Id.username).Text;
                 //string password = FindViewById<EditText>(Resource.Id.password).Text;
@@ -44,11 +43,11 @@ namespace SJSApp10.Droid
                 //{
 
                 //});
-                GetAndDisplayAssignments();
+                //GetAndDisplayAssignments();
 
 
-            };
-            view.FindViewById<Button>(Resource.Id.storeTrash).Click += delegate
+            //};
+            /*view.FindViewById<Button>(Resource.Id.storeTrash).Click += delegate
             {
                 SJSManager.Instance.SetCredentials("", "", false, () => { });
             };
@@ -63,7 +62,7 @@ namespace SJSApp10.Droid
             view.FindViewById<Button>(Resource.Id.inval).Click += delegate
             {
                 SJSManager.Instance.InvalidateToken();
-            };
+            };*/
 
             GetAndDisplayAssignments();
 
@@ -84,7 +83,7 @@ namespace SJSApp10.Droid
 
         private void GetAndDisplayAssignments()
         {
-            Object cached = SJSManager.Instance.GetSchedule(DateTime.Today, (Object o) =>
+            /*Object cached = SJSManager.Instance.GetSchedule(DateTime.Today, (Object o) =>
             {
                 if (o == null)
                 {
@@ -124,7 +123,7 @@ namespace SJSApp10.Droid
             });
             view.FindViewById<TextView>(Resource.Id.response).Text = JsonConvert.SerializeObject(cached);
             // temp
-            view.FindViewById<TextView>(Resource.Id.response).Text = "loadin";
+            view.FindViewById<TextView>(Resource.Id.response).Text = "loadin";*/
         }
     }
 }
