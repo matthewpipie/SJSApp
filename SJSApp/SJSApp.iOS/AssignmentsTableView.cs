@@ -68,11 +68,11 @@ namespace SJSApp.iOS
             {
                 int len1 = 40;
                 int len2 = 40;
-                int len3 = 50;
+                int len3 = 200;
                 ClassName = new UILabel(new CGRect(0, 0, len1, 50));
                 AssignmentType = new UILabel(new CGRect(len1, 0, len2, 50));
-                DueDate = new UILabel(new CGRect(len1 + len2, 0, len3, 50));
-                AssignmentDescription = new UILabel(new CGRect(len1 + len2 + len3, 0, 999, 50));
+                AssignmentDescription = new UILabel(new CGRect(len1 + len2, 0, len3, 50));
+                DueDate = new UILabel(new CGRect(len1 + len2 + len3, 0, 999, 50));
                 //LeftValue.AdjustsFontSizeToFitWidth = true;
                 //LeftValue.Lines = 2;
                 //LeftValue.LineBreakMode = UILineBreakMode.WordWrap;
@@ -81,7 +81,7 @@ namespace SJSApp.iOS
                 //LeftValue.Layer.BorderWidth = 1;
                 //RightValue.Layer.BorderColor = UIColor.LightGray.CGColor;
                 //RightValue.Layer.BorderWidth = 1;
-                AssignmentDescription.Lines = 0;
+                AssignmentDescription.Lines = 5;
                 AssignmentDescription.LineBreakMode = UILineBreakMode.WordWrap;
 
                 AddSubview(ClassName);
